@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+         body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    padding: 30px;
+  }
+button {
+    width: 30%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+        .form{
+            margin-top: 15px;
+            padding-left: 10px;
+            height: 10px;
+            width: 10px;
+            font-size: 16px;
+    border: none;
+    border-radius: 6px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="form"></div>
+    <form onsubmit="return validateForm()">
+        <input type="text" name="Name" placeholder="Name"><br>
+        <input type="text"name ="contact" placeholder="Phone-Number"><br>
+        <input type="text"name ="email" placeholder="Email"><br>
+        <input type="text" name ="age" placeholder="Age"><br>
+        <input type="text"name ="designation" placeholder="Designation"><br>
+        <input type="file" name="files" multiple><br>
+        <button class="button">Submit</button><br>
+    </form>
+    </div>
+    
+
+    <script>
+  function validateForm() {
+    const name = document.forms[0]["Name"].value;
+    const contact = document.forms[0]["contact"].value;
+    const email = document.forms[0]["email"].value;
+    const age = document.forms[0]["age"].value;
+    const designation = document.forms[0]["designation"].value;
+    const files = document.forms[0]["files"].files;
+
+    if (name === "") {
+      alert("Name is required");
+      return false;
+    }
+
+    if (contact === "" || contact.length != 10) {
+      alert("Enter 10-digit phone number");
+      return false;
+    }
+
+   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Enter a valid email address.");
+    return false;
+  }
+    if (age === "" || age < 18 || age > 100) {
+      alert("Enter age between 18 and 100");
+      return false;
+    }
+
+    if (designation === "") {
+      alert("Designation is required");
+      return false;
+    }
+
+    if (files.length === 0) {
+      alert("Select at least one file");
+      return false;
+    }
+
+    alert("Form submitted!");
+    return true;
+  }
+</script>
+
+</body>
+</html>

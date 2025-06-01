@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .cards {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="card-container" id="cards"></div>
+    <script>
+      const container = document.getElementById("cards");
+      const card = document.createElement("div");
+      card.className = "cards";
+      container.appendChild(card);
+      card.innerHTML = ` <h2>The Dark Knight</h2>
+  <p>A heroic story of Batman fighting crime in Gotham City.</p>
+`;
+                  fetch('https://api.tvmaze.com/shows') 
+  .then(response => response.json())
+  .then(data => {
+    data.slice(0, 10).forEach(movie => {
+      const card = document.createElement("div");
+      card.className = "cards";
+      card.innerHTML = `
+        <h2>${movie.name}</h2>
+        <img src="${movie.image?.medium}" alt="${movie.name}" />
+        <p>${movie.summary}</p>
+      `;
+      container.appendChild(card);
+    });
+  });
+    </script>
+  </body>
+</html>

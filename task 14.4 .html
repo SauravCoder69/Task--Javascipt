@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        margin-top: 10px;
+        margin-left: 50px;
+        border-radius: 10px;
+        background-color: red;
+        
+
+    }
+    button:hover{
+        background-color: green;
+    }
+</style>
+<body id  ="background">
+     I am Saurav 
+    <button  onclick="changeColor()">change color</button>
+    <script>
+         function changeColor() {
+        let div = document.getElementById("background")
+        let g = Math.floor(Math.random() * 256);
+        let r = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+            let color = "rgb(" + r + "," + g + "," + b + ")"; 
+
+        div.style.backgroundColor =  color;
+
+        let value = Math.random()
+        console.log(value,'value')
+         }
+    </script>
+</body>
+
+</html>
